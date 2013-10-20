@@ -1,4 +1,4 @@
-package com.test.netty;
+package org.netty.iunna.handlers;
 
 import static io.netty.handler.codec.http.HttpHeaders.Names.LOCATION;
 import static io.netty.handler.codec.http.HttpResponseStatus.FOUND;
@@ -14,6 +14,8 @@ import io.netty.handler.codec.http.QueryStringDecoder;
 import java.util.List;
 import java.util.Map;
 
+import org.netty.iunna.data.ServerReport;
+
 public class RedirectHandler extends ChannelInboundHandlerAdapter {
 
 	private static final String uri = "url";
@@ -24,9 +26,10 @@ public class RedirectHandler extends ChannelInboundHandlerAdapter {
 	}
 
 	@Override
-	public void channelReadComplete(ChannelHandlerContext ctx) {
-		ctx.flush();
-	}
+    public void channelReadComplete(ChannelHandlerContext context)
+                    throws Exception {
+            context.flush();
+    }
 
 	@Override
 	public void channelRead(ChannelHandlerContext context, Object message)
@@ -48,6 +51,7 @@ public class RedirectHandler extends ChannelInboundHandlerAdapter {
 					if (!destinationUrl.startsWith("http:")
 							&& !destinationUrl.startsWith("https:")) {
 						destinationUrl = "//".concat(destinationUrl);
+						System.out.println("URI:" + destinationUrl);
 					}
 					ServerReport.incrementRedirectQuantity(destinationUrl);
 				}

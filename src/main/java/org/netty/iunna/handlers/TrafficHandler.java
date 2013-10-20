@@ -1,10 +1,14 @@
-package com.test.netty;
+package org.netty.iunna.handlers;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.http.HttpRequest;
 import io.netty.handler.traffic.ChannelTrafficShapingHandler;
 
 import java.net.InetSocketAddress;
+
+import org.netty.iunna.data.ClientsReport;
+import org.netty.iunna.data.TrafficReport;
+import org.netty.iunna.data.TrafficStatistic;
 
 public class TrafficHandler extends ChannelTrafficShapingHandler {
 
@@ -38,7 +42,7 @@ public class TrafficHandler extends ChannelTrafficShapingHandler {
 		while (!TrafficReport.getInstance().offerFirst(this.trafficStatistic)) {
 			TrafficReport.getInstance().pollLast();
 		}
-		super.channelActive(ctx);
+		super.channelInactive(ctx);
 	}
 
 	@Override

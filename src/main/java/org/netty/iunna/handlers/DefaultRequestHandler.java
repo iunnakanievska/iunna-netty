@@ -1,4 +1,4 @@
-package com.test.netty;
+package org.netty.iunna.handlers;
 
 import static io.netty.handler.codec.http.HttpHeaders.Names.CONNECTION;
 import static io.netty.handler.codec.http.HttpHeaders.Names.CONTENT_LENGTH;
@@ -34,16 +34,14 @@ public class DefaultRequestHandler extends ChannelInboundHandlerAdapter {
 	public void channelRead(ChannelHandlerContext context, Object message)
 			throws Exception {
 		if (message instanceof HttpRequest) {
-			FullHttpResponse response = new DefaultFullHttpResponse(HTTP_1_1,
-					OK, Unpooled.wrappedBuffer(helpMessage));
+			FullHttpResponse response = new DefaultFullHttpResponse(HTTP_1_1, OK,
+					Unpooled.wrappedBuffer(helpMessage));
 			response.headers().set(CONTENT_TYPE, "text/plain");
 			response.headers().set(CONTENT_LENGTH,
 					response.content().readableBytes());
 			response.headers().set(CONNECTION, Values.KEEP_ALIVE);
-			// context.write(response);
-			context.writeAndFlush(response).addListener(
-					ChannelFutureListener.CLOSE);
-			context.pipeline().fireChannelReadComplete();
+			context.writeAndFlush(response)
+					.addListener(ChannelFutureListener.CLOSE);
 		}
 	}
 

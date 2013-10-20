@@ -1,4 +1,4 @@
-package com.test.netty;
+package org.netty.iunna.handlers;
 
 import static io.netty.handler.codec.http.HttpHeaders.Names.CONTENT_LENGTH;
 import static io.netty.handler.codec.http.HttpHeaders.Names.CONTENT_TYPE;
@@ -20,6 +20,12 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Map.Entry;
 import java.util.concurrent.atomic.AtomicLong;
+
+import org.netty.iunna.data.ClientStatistic;
+import org.netty.iunna.data.ClientsReport;
+import org.netty.iunna.data.ServerReport;
+import org.netty.iunna.data.TrafficReport;
+import org.netty.iunna.data.TrafficStatistic;
 
 public class ServerStatusHandler extends ChannelInboundHandlerAdapter {
 
@@ -63,7 +69,7 @@ public class ServerStatusHandler extends ChannelInboundHandlerAdapter {
 		StringBuilder reportBuilder = new StringBuilder(
 				"<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\"><head>");
 		reportBuilder
-				.append("<title>Таблица</title> <style type=\"text/css\"> TABLE {width: 300px; border-collapse: collapse; } TD, TH { padding: 3px; border: 1px solid black; } TH { background: #b0e0e6; }  </style>");
+				.append("<title>Status</title> <style type=\"text/css\"> TABLE {width: 300px; border-collapse: collapse; } TD, TH { padding: 3px; border: 1px solid black; } TH { background: #b0e0e6; }  </style>");
 		reportBuilder.append("Total connections: ")
 				.append(ClientsReport.getRequestsQuantity()).append("<br>");
 

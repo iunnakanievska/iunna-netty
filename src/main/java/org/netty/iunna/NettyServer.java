@@ -1,4 +1,4 @@
-package com.test.netty;
+package org.netty.iunna;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.Channel;
@@ -20,16 +20,16 @@ public class NettyServer {
 		EventLoopGroup bossGroup = new NioEventLoopGroup();
 		EventLoopGroup workerGroup = new NioEventLoopGroup();
 		try {
-			ServerBootstrap b = new ServerBootstrap();
-			b.option(ChannelOption.SO_BACKLOG, 1024);
-			b.group(bossGroup, workerGroup)
+			ServerBootstrap serverBootstrap = new ServerBootstrap();
+			serverBootstrap.option(ChannelOption.SO_BACKLOG, 1024);
+			serverBootstrap.group(bossGroup, workerGroup)
 					.channel(NioServerSocketChannel.class)
-					.childHandler(new TestServerInitializer());
+					.childHandler(new ServerInitializer());
 
-			Channel ch = b.bind(port).sync().channel();
+			Channel channel = serverBootstrap.bind(port).sync().channel();
 			System.out.println("Web socket server started at port " + port
 					+ '.');
-			ch.closeFuture().sync();
+			channel.closeFuture().sync();
 
 		} finally {
 			bossGroup.shutdownGracefully();
