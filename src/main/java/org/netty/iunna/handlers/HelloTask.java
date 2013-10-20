@@ -14,6 +14,11 @@ import io.netty.handler.codec.http.HttpHeaders.Values;
 import io.netty.util.Timeout;
 import io.netty.util.TimerTask;
 
+/**
+ * Task to display greetings message.
+ * @author Iunna
+ *
+ */
 public class HelloTask implements TimerTask {
 	private ChannelHandlerContext context;
 	private static final byte[] greetings = "Hello, World!".getBytes();

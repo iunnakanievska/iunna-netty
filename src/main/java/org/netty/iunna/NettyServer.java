@@ -7,6 +7,12 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 
+/**
+ * Class with configured server.
+ * 
+ * @author Iunna
+ *
+ */
 public class NettyServer {
 
 	private final int port;

@@ -2,6 +2,19 @@ package org.netty.iunna.data;
 
 import java.util.concurrent.atomic.AtomicLong;
 
+/**
+ * 
+ * @author Iunna
+ * 
+ *         POJO class with traffic statistic:
+ *         client's IP address
+ *         requested URI
+ *         access time
+ *         amount of the sent bytes
+ *         amount of the received bytes
+ *         speed of the connection
+ * 
+ */
 public class TrafficStatistic {
 
 	private static AtomicLong idCounter = new AtomicLong(0L);

@@ -3,13 +3,16 @@ package org.netty.iunna.handlers;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.handler.codec.http.HttpRequest;
-import io.netty.util.HashedWheelTimer;
-import io.netty.util.Timer;
 
 import java.util.concurrent.TimeUnit;
 
+/**
+ * Handler for /hello URI.
+ * Greetings message will be shown after 10 seconds.
+ * @author Iunna
+ *
+ */
 public class HelloHandler extends ChannelInboundHandlerAdapter {
-//	private Timer timer = new HashedWheelTimer();
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {

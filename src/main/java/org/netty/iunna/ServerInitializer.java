@@ -12,6 +12,11 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.handler.codec.http.HttpServerCodec;
 import io.netty.handler.traffic.AbstractTrafficShapingHandler;
 
+/**
+ * Server initializer class
+ * @author Iunna
+ *
+ */
 public class ServerInitializer extends ChannelInitializer<SocketChannel> {
 	/**
 	 * Initializing pipeline by adding handlers in order

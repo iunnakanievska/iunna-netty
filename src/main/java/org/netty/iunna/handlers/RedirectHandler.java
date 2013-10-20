@@ -1,5 +1,9 @@
 package org.netty.iunna.handlers;
 
+/**
+ * Handler for redirection.
+ * User will be redirected onto URL specified via request property "url"
+ */
 import static io.netty.handler.codec.http.HttpHeaders.Names.LOCATION;
 import static io.netty.handler.codec.http.HttpResponseStatus.FOUND;
 import static io.netty.handler.codec.http.HttpVersion.HTTP_1_1;

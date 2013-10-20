@@ -27,6 +27,11 @@ import org.netty.iunna.data.ServerReport;
 import org.netty.iunna.data.TrafficReport;
 import org.netty.iunna.data.TrafficStatistic;
 
+/**
+ * Handler to display status information
+ * @author Iunna
+ *
+ */
 public class ServerStatusHandler extends ChannelInboundHandlerAdapter {
 
 	private static DefaultChannelGroup allChannels = new DefaultChannelGroup(

@@ -10,6 +10,11 @@ import org.netty.iunna.data.ClientsReport;
 import org.netty.iunna.data.TrafficReport;
 import org.netty.iunna.data.TrafficStatistic;
 
+/**
+ * Handler to manage traffic information.
+ * @author Iunna
+ *
+ */
 public class TrafficHandler extends ChannelTrafficShapingHandler {
 
 	private TrafficStatistic trafficStatistic;

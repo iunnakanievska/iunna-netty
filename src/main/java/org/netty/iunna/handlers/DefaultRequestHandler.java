@@ -14,13 +14,26 @@ import io.netty.handler.codec.http.FullHttpResponse;
 import io.netty.handler.codec.http.HttpHeaders.Values;
 import io.netty.handler.codec.http.HttpRequest;
 
+/**
+ * Handler for unexpected request.
+ * User should get help message in this case.
+ * @author Iunna
+ *
+ */
 public class DefaultRequestHandler extends ChannelInboundHandlerAdapter {
+	
+	/**
+	 * Help message for user
+	 */
 	private static final byte[] helpMessage;
 
 	static {
-		String message = "Dear user,\n"
-				+ "Seems like you make some mistake during choosing of the request.\n"
-				+ "Please, use one of the allowed requests:\n" + "\t";
+		String message = "Dear user,<br>"
+				+ "Seems like you make some mistake during choosing of the request.<br>"
+				+ "Please, use one of the allowed requests:<br>"
+				+ "<a title=\"hello\" href=\"http://localhost:8080/hello\">hello</a> - to get greeting message<br>"
+				+ "redirect?url=<url> - to be redirected onto <url><br>"
+				+ "<a title=\"status\" href=\"http://localhost:8080/status\">status</a> - to get statistic";
 		helpMessage = message.getBytes();
 	}
 
@@ -36,7 +49,7 @@ public class DefaultRequestHandler extends ChannelInboundHandlerAdapter {
 		if (message instanceof HttpRequest) {
 			FullHttpResponse response = new DefaultFullHttpResponse(HTTP_1_1, OK,
 					Unpooled.wrappedBuffer(helpMessage));
-			response.headers().set(CONTENT_TYPE, "text/plain");
+			response.headers().set(CONTENT_TYPE, "text/html");
 			response.headers().set(CONTENT_LENGTH,
 					response.content().readableBytes());
 			response.headers().set(CONNECTION, Values.KEEP_ALIVE);
