@@ -32,7 +32,7 @@ public class HelloHandler extends ChannelInboundHandlerAdapter {
                             && ((HttpRequest) message).getUri().toLowerCase()
                                             .equals("/hello")) {
                     HelloTask helloTask = new HelloTask(context);
-                    TaskTimer.timer.newTimeout(helloTask, 10, TimeUnit.SECONDS);
+                    TaskTimer.getInstance().newTimeout(helloTask, 10, TimeUnit.SECONDS);
             } else {
                     context.fireChannelRead(message);
             }
