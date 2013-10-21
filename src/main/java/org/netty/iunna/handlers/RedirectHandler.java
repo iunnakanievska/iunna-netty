@@ -55,7 +55,6 @@ public class RedirectHandler extends ChannelInboundHandlerAdapter {
 					if (!destinationUrl.startsWith("http:")
 							&& !destinationUrl.startsWith("https:")) {
 						destinationUrl = "//".concat(destinationUrl);
-						System.out.println("URI:" + destinationUrl);
 					}
 					ServerReport.incrementRedirectQuantity(destinationUrl);
 				}
