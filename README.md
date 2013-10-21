@@ -22,3 +22,4 @@ One of the following commands may be used:
 Notes
 =====
 Data aren't persisted, so willn't be available after application was closed.
+HeashedWheelTimer has been extracted into separate class TaskTimer to suppress the LEAK when too many HashedWheelTimer instances may be created. HashedWheelTimer is a shared resource that must be reused across the JVM,so that only a few instances are created.
